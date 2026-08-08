@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rutgon.dinhq.io.vn — dinhquy</title>
+  <title>rutgon.dinhq.io.vn — Dinh Q.</title>
   
-  <!-- CẤU HÌNH ICON NHỎ (FAVICON) CHO TRÌNH DUYỆT -->
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="logo.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="logo.png" />
   <link rel="shortcut icon" href="logo.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
@@ -25,31 +22,36 @@
   <!-- Header -->
   <header class="w-full max-w-2xl flex justify-between items-center py-4">
     <div class="flex items-center gap-3">
-      <!-- Icon nhỏ ở Header -->
-      <img src="logo.png" alt="Logo Dinh Q" class="w-9 h-9 object-contain filter drop-shadow rounded-full" />
+      <img src="logo.png" alt="Logo" class="w-9 h-9 object-contain rounded-full shadow" />
       <div>
         <span class="font-bold text-base sm:text-lg tracking-tight text-white block leading-tight">rutgon.dinhq.io.vn</span>
-        <span class="text-[11px] text-slate-400 font-medium">Developed by Gemini</span>
+        <span class="text-[11px] text-slate-400 font-medium">Developed by Dinh Q.</span>
       </div>
     </div>
-    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50 hidden sm:inline-block">Gemini67</span>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50 hidden sm:inline-block">Dinh Q. Shortener</span>
   </header>
 
   <!-- Main Container -->
   <main class="w-full max-w-xl my-auto">
     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glow-effect">
       
-      <!-- Logo chính giữa khung -->
-      <div class="text-center mb-8">
-        <div class="inline-block p-3 bg-slate-950/60 rounded-2xl border border-slate-800/80 mb-4 shadow-inner">
-          <img src="logo.png" alt="Logo Dinh Q" class="w-16 h-16 object-contain rounded-full" />
+      <!-- Logo Main -->
+      <div class="text-center mb-6">
+        <div class="inline-block p-3 bg-slate-950/60 rounded-2xl border border-slate-800/80 mb-3">
+          <img src="logo.png" alt="Logo Dinh Q" class="w-14 h-14 object-contain rounded-full" />
         </div>
-        <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">Rút gọn liên kết</h1>
-        <p class="text-slate-400 text-sm">Hệ thống rút gọn URL cá nhân của Gemini67</p>
+        <h1 class="text-2xl font-bold text-white tracking-tight mb-1">Rút gọn & Lưu văn bản</h1>
+        <p class="text-slate-400 text-xs">Hệ thống công cụ tiện ích cá nhân của Dinh Q.</p>
       </div>
 
-      <!-- Form -->
-      <form id="shortenForm" class="space-y-4">
+      <!-- Tab Chuyển Đổi -->
+      <div class="flex gap-2 p-1 bg-slate-950 rounded-xl mb-6 border border-slate-800/80">
+        <button id="tabLink" onclick="switchTab('link')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all">Rút Gọn Link (nk)</button>
+        <button id="tabText" onclick="switchTab('text')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all">Lưu Plaintext (file) 🔒</button>
+      </div>
+
+      <!-- Form 1: Rút Gọn Link -->
+      <form id="linkForm" class="space-y-4">
         <div>
           <label for="urlInput" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Đường dẫn gốc</label>
           <input 
@@ -57,35 +59,47 @@
             id="urlInput" 
             placeholder="https://example.com/duong-dan-rat-dai..." 
             required
-            class="w-full px-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
+            class="w-full px-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 text-sm"
           >
         </div>
-
-        <button 
-          type="submit" 
-          id="submitBtn"
-          class="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-sm shadow-lg shadow-indigo-600/20"
-        >
+        <button type="submit" id="submitLinkBtn" class="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold rounded-xl transition-all text-sm shadow-lg shadow-indigo-600/20">
           <span>Tạo Link Rút Gọn</span>
+        </button>
+      </form>
+
+      <!-- Form 2: Plaintext -->
+      <form id="textForm" class="space-y-4 hidden">
+        <div>
+          <label for="textContent" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Nội dung văn bản</label>
+          <textarea 
+            id="textContent" 
+            rows="5" 
+            placeholder="Nhập nội dung cần lưu trữ bảo mật..." 
+            required 
+            class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm font-mono"
+          ></textarea>
+        </div>
+        <div>
+          <label for="textPassword" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Mật khẩu bảo vệ</label>
+          <input 
+            type="password" 
+            id="textPassword" 
+            placeholder="Nhập mật khẩu khóa ghi chú..." 
+            required 
+            class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm"
+          >
+        </div>
+        <button type="submit" id="submitTextBtn" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-semibold rounded-xl transition-all text-sm shadow-lg shadow-emerald-600/20">
+          <span>Lưu Văn Bản Bảo Mật</span>
         </button>
       </form>
 
       <!-- Kết quả -->
       <div id="resultBox" class="hidden mt-6 pt-6 border-t border-slate-800/80">
-        <label class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Kết quả của bạn</label>
+        <label id="resultLabel" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Đường dẫn kết quả</label>
         <div class="flex items-center gap-2 bg-slate-950 border border-slate-800 p-2 rounded-xl">
-          <input 
-            type="text" 
-            id="resultInput" 
-            readonly 
-            class="w-full bg-transparent px-3 text-indigo-400 font-medium text-sm focus:outline-none"
-          >
-          <button 
-            id="copyBtn"
-            class="px-4 py-2 bg-slate-800 hover:bg-slate-700 active:bg-slate-800 text-slate-200 text-xs font-medium rounded-lg transition-all shrink-0"
-          >
-            Sao chép
-          </button>
+          <input type="text" id="resultInput" readonly class="w-full bg-transparent px-3 font-medium text-sm focus:outline-none">
+          <button id="copyBtn" onclick="copyResult()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg transition-all shrink-0">Sao chép</button>
         </div>
       </div>
 
@@ -95,57 +109,107 @@
   <!-- Footer -->
   <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-600 flex items-center justify-center gap-2">
     <img src="logo.png" alt="Icon Dinh Q" class="w-4 h-4 object-contain opacity-60 rounded-full" />
-    <span>&copy; 2026 rutgon.dinhq.io.vn — dinhquy</span>
+    <span>&copy; 2026 rutgon.dinhq.io.vn — Dinh Q.</span>
   </footer>
 
+  <!-- JS Switch Tab & Form Handling -->
   <script>
-    const form = document.getElementById('shortenForm');
-    const urlInput = document.getElementById('urlInput');
-    const submitBtn = document.getElementById('submitBtn');
-    const resultBox = document.getElementById('resultBox');
-    const resultInput = document.getElementById('resultInput');
-    const copyBtn = document.getElementById('copyBtn');
+    function switchTab(type) {
+      const linkForm = document.getElementById('linkForm');
+      const textForm = document.getElementById('textForm');
+      const tabLink = document.getElementById('tabLink');
+      const tabText = document.getElementById('tabText');
+      const resultBox = document.getElementById('resultBox');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const rawUrl = urlInput.value.trim();
+      resultBox.classList.add('hidden');
 
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Đang xử lý...</span>`;
-
-      try {
-        const response = await fetch('/api/shorten', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: rawUrl })
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          resultInput.value = data.shortUrl;
-          resultBox.classList.remove('hidden');
-        } else {
-          alert(data.error || 'Có lỗi xảy ra!');
-        }
-      } catch (err) {
-        alert('Không thể kết nối tới server.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `<span>Tạo Link Rút Gọn</span>`;
+      if (type === 'link') {
+        linkForm.classList.remove('hidden');
+        textForm.classList.add('hidden');
+        tabLink.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all';
+        tabText.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all';
+      } else {
+        linkForm.classList.add('hidden');
+        textForm.classList.remove('hidden');
+        tabText.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg bg-emerald-600 text-white transition-all';
+        tabLink.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all';
       }
+    }
+
+    document.getElementById('linkForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitLinkBtn');
+      btn.disabled = true; btn.innerText = 'Đang xử lý...';
+      try {
+        const res = await fetch('/api/shorten', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ url: document.getElementById('urlInput').value })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('resultLabel').innerText = 'Đường dẫn ngắn (nk.dinhq.io.vn):';
+          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-indigo-400 font-medium text-sm focus:outline-none';
+          document.getElementById('resultInput').value = data.shortUrl;
+          document.getElementById('resultBox').classList.remove('hidden');
+        } else { alert(data.error); }
+      } catch (err) { alert('Không thể kết nối máy chủ!'); }
+      finally { btn.disabled = false; btn.innerText = 'Tạo Link Rút Gọn'; }
     });
 
-    copyBtn.addEventListener('click', () => {
-      resultInput.select();
-      navigator.clipboard.writeText(resultInput.value);
+    document.getElementById('textForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitTextBtn');
+      btn.disabled = true; btn.innerText = 'Đang xử lý...';
+      try {
+        const res = await fetch('/api/paste', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            content: document.getElementById('textContent').value,
+            password: document.getElementById('textPassword').value
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('resultLabel').innerText = 'Đường dẫn Plaintext (file.dinhq.io.vn):';
+          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-emerald-400 font-medium text-sm focus:outline-none';
+          document.getElementById('resultInput').value = data.pasteUrl;
+          document.getElementById('resultBox').classList.remove('hidden');
+        } else { alert(data.error); }
+      } catch (err) { alert('Không thể kết nối máy chủ!'); }
+      finally { btn.disabled = false; btn.innerText = 'Lưu Văn Bản Bảo Mật'; }
+    });
+
+    function copyResult() {
+      const input = document.getElementById('resultInput');
+      input.select();
+      navigator.clipboard.writeText(input.value);
+      const copyBtn = document.getElementById('copyBtn');
       copyBtn.innerText = 'Đã chép!';
       copyBtn.classList.add('bg-emerald-600', 'text-white');
       setTimeout(() => {
         copyBtn.innerText = 'Sao chép';
         copyBtn.classList.remove('bg-emerald-600', 'text-white');
       }, 2000);
+    }
+  </script>
+
+  <!-- Script Chống Soi Code F12 -->
+  <script>
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'F12') { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) { e.preventDefault(); return false; }
+      if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) { e.preventDefault(); return false; }
     });
+    setInterval(() => {
+      const start = performance.now();
+      debugger;
+      if (performance.now() - start > 100) {
+        document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:20%;">Hành vi soi code bị cấm!</h1>';
+      }
+    }, 1000);
   </script>
 </body>
 </html>
