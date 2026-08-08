@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rutgon.dinhq.io.vn — URL Shortener</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b0f19;
+      color: #f3f4f6;
+    }
+    .glow-effect {
+      box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8">
+
+  <!-- Header -->
+  <header class="w-full max-w-2xl flex justify-between items-center py-4">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white text-sm">rG</div>
+      <span class="font-semibold text-lg tracking-tight text-white">rutgon.dinhq.io.vn</span>
+    </div>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50">Fast & Free</span>
+  </header>
+
+  <!-- Main Container -->
+  <main class="w-full max-w-xl my-auto">
+    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glow-effect">
+      
+      <div class="text-center mb-8">
+        <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">Rút gọn liên kết</h1>
+        <p class="text-slate-400 text-sm">Định dạng URL: <code class="text-indigo-400 bg-indigo-950/50 px-2 py-0.5 rounded border border-indigo-800/40">rutgon.dinhq.io.vn/(10_ký_tự)</code></p>
+      </div>
+
+      <!-- Form -->
+      <form id="shortenForm" class="space-y-4">
+        <div>
+          <label for="urlInput" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Đường dẫn gốc</label>
+          <input 
+            type="url" 
+            id="urlInput" 
+            placeholder="https://example.com/duong-dan-rat-dai..." 
+            required
+            class="w-full px-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm"
+          >
+        </div>
+
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-sm shadow-lg shadow-indigo-600/20"
+        >
+          <span>Tạo Link Rút Gọn</span>
+        </button>
+      </form>
+
+      <!-- Result Area -->
+      <div id="resultBox" class="hidden mt-6 pt-6 border-t border-slate-800/80">
+        <label class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Kết quả của bạn</label>
+        <div class="flex items-center gap-2 bg-slate-950 border border-slate-800 p-2 rounded-xl">
+          <input 
+            type="text" 
+            id="resultInput" 
+            readonly 
+            class="w-full bg-transparent px-3 text-indigo-400 font-medium text-sm focus:outline-none"
+          >
+          <button 
+            id="copyBtn"
+            class="px-4 py-2 bg-slate-800 hover:bg-slate-700 active:bg-slate-800 text-slate-200 text-xs font-medium rounded-lg transition-all shrink-0"
+          >
+            Sao chép
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-600">
+    &copy; 2026 rutgon.dinhq.io.vn — Powerful URL Shortener
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const form = document.getElementById('shortenForm');
+    const urlInput = document.getElementById('urlInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const resultBox = document.getElementById('resultBox');
+    const resultInput = document.getElementById('resultInput');
+    const copyBtn = document.getElementById('copyBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const rawUrl = urlInput.value.trim();
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>Đang xử lý...</span>`;
+
+      try {
+        const response = await fetch('/api/shorten', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: rawUrl })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          resultInput.value = data.shortUrl;
+          resultBox.classList.remove('hidden');
+        } else {
+          alert(data.error || 'Có lỗi xảy ra!');
+        }
+      } catch (err) {
+        alert('Không thể kết nối tới server.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<span>Tạo Link Rút Gọn</span>`;
+      }
+    });
+
+    copyBtn.addEventListener('click', () => {
+      resultInput.select();
+      navigator.clipboard.writeText(resultInput.value);
+      copyBtn.innerText = 'Đã chép!';
+      copyBtn.classList.add('bg-emerald-600', 'text-white');
+      setTimeout(() => {
+        copyBtn.innerText = 'Sao chép';
+        copyBtn.classList.remove('bg-emerald-600', 'text-white');
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
