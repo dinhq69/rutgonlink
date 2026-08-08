@@ -3,40 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rutgon.dinhq.io.vn — URL Shortener</title>
+  <title>rutgon.dinhq.io.vn — dinhquy</title>
+  
+  <!-- CẤU HÌNH ICON NHỎ (FAVICON) CHO TRÌNH DUYỆT -->
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="logo.png" />
+  <link rel="shortcut icon" href="logo.png" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #0b0f19;
-      color: #f3f4f6;
-    }
-    .glow-effect {
-      box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15);
-    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
+    .glow-effect { box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15); }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8">
 
   <!-- Header -->
   <header class="w-full max-w-2xl flex justify-between items-center py-4">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white text-sm">rG</div>
-      <span class="font-semibold text-lg tracking-tight text-white">rutgon.dinhq.io.vn</span>
+    <div class="flex items-center gap-3">
+      <!-- Icon nhỏ ở Header -->
+      <img src="logo.png" alt="Logo Dinh Q" class="w-9 h-9 object-contain filter drop-shadow rounded-full" />
+      <div>
+        <span class="font-bold text-base sm:text-lg tracking-tight text-white block leading-tight">rutgon.dinhq.io.vn</span>
+        <span class="text-[11px] text-slate-400 font-medium">Developed by Dinh Q.</span>
+      </div>
     </div>
-    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50">Fast & Free</span>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50 hidden sm:inline-block">Dinh Q. Shortener</span>
   </header>
 
   <!-- Main Container -->
   <main class="w-full max-w-xl my-auto">
     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glow-effect">
       
+      <!-- Logo chính giữa khung -->
       <div class="text-center mb-8">
+        <div class="inline-block p-3 bg-slate-950/60 rounded-2xl border border-slate-800/80 mb-4 shadow-inner">
+          <img src="logo.png" alt="Logo Dinh Q" class="w-16 h-16 object-contain rounded-full" />
+        </div>
         <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">Rút gọn liên kết</h1>
-        <p class="text-slate-400 text-sm">Định dạng URL: <code class="text-indigo-400 bg-indigo-950/50 px-2 py-0.5 rounded border border-indigo-800/40">rutgon.dinhq.io.vn/(10_ký_tự)</code></p>
+        <p class="text-slate-400 text-sm">Hệ thống rút gọn URL cá nhân của Dinh Q.</p>
       </div>
 
       <!-- Form -->
@@ -61,7 +70,7 @@
         </button>
       </form>
 
-      <!-- Result Area -->
+      <!-- Kết quả -->
       <div id="resultBox" class="hidden mt-6 pt-6 border-t border-slate-800/80">
         <label class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Kết quả của bạn</label>
         <div class="flex items-center gap-2 bg-slate-950 border border-slate-800 p-2 rounded-xl">
@@ -84,11 +93,11 @@
   </main>
 
   <!-- Footer -->
-  <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-600">
-    &copy; 2026 rutgon.dinhq.io.vn — Powerful URL Shortener
+  <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-600 flex items-center justify-center gap-2">
+    <img src="logo.png" alt="Icon Dinh Q" class="w-4 h-4 object-contain opacity-60 rounded-full" />
+    <span>&copy; 2026 rutgon.dinhq.io.vn — dinhquy</span>
   </footer>
 
-  <!-- Script -->
   <script>
     const form = document.getElementById('shortenForm');
     const urlInput = document.getElementById('urlInput');
