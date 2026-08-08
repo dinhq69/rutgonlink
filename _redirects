@@ -1,0 +1,2 @@
+/api/*  http://dono-03.danbot.host:5096/api/:splat  200!
+/*      http://dono-03.danbot.host:5096/:splat      200!
