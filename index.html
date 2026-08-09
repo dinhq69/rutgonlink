@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rutgon.dinhq.io.vn — Gemini</title>
+  <title>rutgon.dinhq.io.vn — Dinh Q.</title>
   
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="logo.png" />
@@ -15,24 +15,61 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
     .glow-effect { box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15); }
+    
+    /* Khung quảng cáo 2 bên PC */
+    .ad-banner-side {
+      width: 160px;
+      height: 600px;
+    }
   </style>
+
+  <!-- ================= 1. POPUNDER / VIGNETTE ADS (TẬN DỤNG CLICK ĐỂ TĂNG DOANH THU GẤP 3-5 LẦN) ================= -->
+  <!-- DÁN SCRIPT POPUNDER HOẶC VIGNETTE ADS TỪ MONETAG / ADSTERRA VÀO ĐÂY -->
+  <!-- Ví dụ: <script type="text/javascript" src="//your-popunder-network-script.js"></script> -->
+
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8">
+<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8 relative pb-20 sm:pb-8">
+
+  <!-- ================= 2. QUẢNG CÁO BÊN TRÁI PC (BANNER 160x600) ================= -->
+  <aside class="hidden xl:block fixed left-4 top-1/2 -translate-y-1/2 z-10">
+    <div class="ad-banner-side bg-slate-900/50 border border-slate-800 rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden">
+      <span class="text-[10px] text-slate-500 uppercase font-semibold mb-2 block">Quảng cáo</span>
+      
+      <!-- DÁN CODE BANNER 160x600 BÊN TRÁI TỪ ADSTERRA/MONETAG VÀO ĐÂY -->
+      <div class="w-full h-full bg-slate-950/80 rounded border border-dashed border-slate-800 flex items-center justify-center text-xs text-slate-600">
+        Ads PC Left (160x600)
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ================= 3. QUẢNG CÁO BÊN PHẢI PC (BANNER 160x600) ================= -->
+  <aside class="hidden xl:block fixed right-4 top-1/2 -translate-y-1/2 z-10">
+    <div class="ad-banner-side bg-slate-900/50 border border-slate-800 rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden">
+      <span class="text-[10px] text-slate-500 uppercase font-semibold mb-2 block">Quảng cáo</span>
+      
+      <!-- DÁN CODE BANNER 160x600 BÊN PHẢI TỪ ADSTERRA/MONETAG VÀO ĐÂY -->
+      <div class="w-full h-full bg-slate-950/80 rounded border border-dashed border-slate-800 flex items-center justify-center text-xs text-slate-600">
+        Ads PC Right (160x600)
+      </div>
+
+    </div>
+  </aside>
 
   <!-- Header -->
-  <header class="w-full max-w-2xl flex justify-between items-center py-4">
+  <header class="w-full max-w-2xl flex justify-between items-center py-4 z-20">
     <div class="flex items-center gap-3">
       <img src="logo.png" alt="Logo" class="w-9 h-9 object-contain rounded-full shadow" />
       <div>
         <span class="font-bold text-base sm:text-lg tracking-tight text-white block leading-tight">rutgon.dinhq.io.vn</span>
-        <span class="text-[11px] text-slate-400 font-medium">Developed by Gemini</span>
+        <span class="text-[11px] text-slate-400 font-medium">Developed by Dinh Q.</span>
       </div>
     </div>
-    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50 hidden sm:inline-block"> Được tạo ra bởi Gemini </span>
+    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50 hidden sm:inline-block">Dinh Q. Shortener</span>
   </header>
 
   <!-- Main Container -->
-  <main class="w-full max-w-xl my-auto">
+  <main class="w-full max-w-xl my-auto z-20">
     <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glow-effect">
       
       <!-- Logo Main -->
@@ -46,8 +83,8 @@
 
       <!-- Tab Chuyển Đổi -->
       <div class="flex gap-2 p-1 bg-slate-950 rounded-xl mb-6 border border-slate-800/80">
-        <button id="tabLink" onclick="switchTab('link')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all">Rút Gọn Link</button>
-        <button id="tabText" onclick="switchTab('text')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all">Lưu Plaintext 🔒</button>
+        <button id="tabLink" onclick="switchTab('link')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all">Rút Gọn Link (nk)</button>
+        <button id="tabText" onclick="switchTab('text')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all">Lưu Plaintext (file) 🔒</button>
       </div>
 
       <!-- Form 1: Rút Gọn Link -->
@@ -63,7 +100,6 @@
           >
         </div>
 
-        <!-- Custom Link -->
         <div>
           <label for="linkCustom" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link (Không bắt buộc)</label>
           <div class="flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 focus-within:border-indigo-500">
@@ -105,7 +141,6 @@
           >
         </div>
 
-        <!-- Custom Link cho Text -->
         <div>
           <label for="textCustom" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link (Không bắt buộc)</label>
           <div class="flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 focus-within:border-emerald-500">
@@ -137,10 +172,39 @@
   </main>
 
   <!-- Footer -->
-  <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-600 flex items-center justify-center gap-2">
+  <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-600 flex items-center justify-center gap-2 z-20">
     <img src="logo.png" alt="Icon Dinh Q" class="w-4 h-4 object-contain opacity-60 rounded-full" />
     <span>&copy; 2026 rutgon.dinhq.io.vn — Dinh Q.</span>
   </footer>
+
+  <!-- ================= 4. QUẢNG CÁO DÍNH ĐÁY MOBILE (BANNER 320x50) ================= -->
+  <div class="block xl:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 border-t border-slate-800 p-1.5 flex flex-col items-center justify-center text-center shadow-2xl backdrop-blur-md">
+    <div class="w-full max-w-[320px] flex justify-between items-center px-1 mb-1">
+      <span class="text-[9px] text-slate-500 uppercase font-semibold">Quảng cáo</span>
+      <button onclick="this.parentElement.parentElement.remove()" class="text-[10px] text-slate-400 hover:text-white px-1">✕ Đóng</button>
+    </div>
+    
+    <!-- DÁN CODE BANNER 320x50 MOBILE TỪ ADSTERRA/MONETAG VÀO ĐÂY -->
+    <div class="w-full max-w-[320px] h-[50px] bg-slate-950/80 rounded border border-dashed border-slate-800 flex items-center justify-center text-xs text-slate-600">
+      Ads Mobile Banner (320x50)
+    </div>
+  </div>
+
+  <!-- ================= POPUP PHÁT HIỆN ADBLOCK ================= -->
+  <div id="adblockOverlay" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-red-500/30 p-6 sm:p-8 rounded-2xl max-w-md w-full text-center shadow-2xl">
+      <div class="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold border border-red-500/20">
+        🚫
+      </div>
+      <h2 class="text-xl font-bold text-white mb-2">Phát hiện Trình chặn Quảng cáo!</h2>
+      <p class="text-slate-400 text-xs leading-relaxed mb-6">
+        Hệ thống phát hiện bạn đang bật <b class="text-red-400">AdBlock</b>. Vui lòng tắt trình chặn quảng cáo cho trang web này để ủng hộ duy trì máy chủ và tiếp tục sử dụng.
+      </p>
+      <button onclick="window.location.reload()" class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/30">
+        Tôi đã tắt Adblock — Tải lại trang
+      </button>
+    </div>
+  </div>
 
   <!-- JS Switch Tab & Form Handling -->
   <script>
@@ -229,7 +293,45 @@
     }
   </script>
 
-  <!-- Anti-F12 Script -->
+  <!-- ================= SCRIPT PHÁT HIỆN ADBLOCK ================= -->
+  <script>
+    async function checkAdBlock() {
+      let isAdBlockActive = false;
+
+      // 1. Kiểm tra qua Fake Element
+      const fakeAd = document.createElement('div');
+      fakeAd.innerHTML = '&nbsp;';
+      fakeAd.className = 'adsbox ad-zone ad-space doubleclick google-ad';
+      fakeAd.style.cssText = 'position: absolute; top: -9999px; left: -9999px; height: 1px; width: 1px;';
+      document.body.appendChild(fakeAd);
+
+      if (fakeAd.offsetHeight === 0 || fakeAd.clientHeight === 0) {
+        isAdBlockActive = true;
+      }
+      fakeAd.remove();
+
+      // 2. Kiểm tra qua Fetch URL Ads
+      if (!isAdBlockActive) {
+        try {
+          await fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', { method: 'HEAD', mode: 'no-cors' });
+        } catch (e) {
+          isAdBlockActive = true;
+        }
+      }
+
+      // Hiển thị Popup nếu bật Adblock
+      if (isAdBlockActive) {
+        const overlay = document.getElementById('adblockOverlay');
+        if (overlay) overlay.classList.remove('hidden');
+      }
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(checkAdBlock, 800);
+    });
+  </script>
+
+  <!-- Anti-F12 / Anti-DevTools Script -->
   <script>
     document.addEventListener('contextmenu', (e) => e.preventDefault());
     document.addEventListener('keydown', (e) => {
