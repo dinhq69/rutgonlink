@@ -23,19 +23,18 @@
     }
   </style>
 
-  <!-- ================= 1. POPUNDER / VIGNETTE ADS (TẬN DỤNG CLICK ĐỂ TĂNG DOANH THU GẤP 3-5 LẦN) ================= -->
-  <!-- DÁN SCRIPT POPUNDER HOẶC VIGNETTE ADS TỪ MONETAG / ADSTERRA VÀO ĐÂY -->
-  <!-- Ví dụ: <script type="text/javascript" src="//your-popunder-network-script.js"></script> -->
+  <!-- ================= POPUNDER / VIGNETTE ADS (TỐI ƯU DOANH THU MONETAG) ================= -->
+  <!-- DÁN CODE POPUNDER / VIGNETTE ADS CỦA MONETAG VÀO ĐÂY SAU KHI ĐƯỢC DUYỆT -->
 
 </head>
 <body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8 relative pb-20 sm:pb-8">
 
-  <!-- ================= 2. QUẢNG CÁO BÊN TRÁI PC (BANNER 160x600) ================= -->
+  <!-- ================= QUẢNG CÁO BÊN TRÁI PC (BANNER 160x600) ================= -->
   <aside class="hidden xl:block fixed left-4 top-1/2 -translate-y-1/2 z-10">
     <div class="ad-banner-side bg-slate-900/50 border border-slate-800 rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden">
       <span class="text-[10px] text-slate-500 uppercase font-semibold mb-2 block">Quảng cáo</span>
       
-      <!-- DÁN CODE BANNER 160x600 BÊN TRÁI TỪ ADSTERRA/MONETAG VÀO ĐÂY -->
+      <!-- DÁN CODE BANNER 160x600 BÊN TRÁI VÀO ĐÂY -->
       <div class="w-full h-full bg-slate-950/80 rounded border border-dashed border-slate-800 flex items-center justify-center text-xs text-slate-600">
         Ads PC Left (160x600)
       </div>
@@ -43,12 +42,12 @@
     </div>
   </aside>
 
-  <!-- ================= 3. QUẢNG CÁO BÊN PHẢI PC (BANNER 160x600) ================= -->
+  <!-- ================= QUẢNG CÁO BÊN PHẢI PC (BANNER 160x600) ================= -->
   <aside class="hidden xl:block fixed right-4 top-1/2 -translate-y-1/2 z-10">
     <div class="ad-banner-side bg-slate-900/50 border border-slate-800 rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden">
       <span class="text-[10px] text-slate-500 uppercase font-semibold mb-2 block">Quảng cáo</span>
       
-      <!-- DÁN CODE BANNER 160x600 BÊN PHẢI TỪ ADSTERRA/MONETAG VÀO ĐÂY -->
+      <!-- DÁN CODE BANNER 160x600 BÊN PHẢI VÀO ĐÂY -->
       <div class="w-full h-full bg-slate-950/80 rounded border border-dashed border-slate-800 flex items-center justify-center text-xs text-slate-600">
         Ads PC Right (160x600)
       </div>
@@ -177,14 +176,14 @@
     <span>&copy; 2026 rutgon.dinhq.io.vn — Dinh Q.</span>
   </footer>
 
-  <!-- ================= 4. QUẢNG CÁO DÍNH ĐÁY MOBILE (BANNER 320x50) ================= -->
+  <!-- ================= QUẢNG CÁO DÍNH ĐÁY MOBILE (BANNER 320x50) ================= -->
   <div class="block xl:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 border-t border-slate-800 p-1.5 flex flex-col items-center justify-center text-center shadow-2xl backdrop-blur-md">
     <div class="w-full max-w-[320px] flex justify-between items-center px-1 mb-1">
       <span class="text-[9px] text-slate-500 uppercase font-semibold">Quảng cáo</span>
       <button onclick="this.parentElement.parentElement.remove()" class="text-[10px] text-slate-400 hover:text-white px-1">✕ Đóng</button>
     </div>
     
-    <!-- DÁN CODE BANNER 320x50 MOBILE TỪ ADSTERRA/MONETAG VÀO ĐÂY -->
+    <!-- DÁN CODE BANNER 320x50 MOBILE VÀO ĐÂY -->
     <div class="w-full max-w-[320px] h-[50px] bg-slate-950/80 rounded border border-dashed border-slate-800 flex items-center justify-center text-xs text-slate-600">
       Ads Mobile Banner (320x50)
     </div>
@@ -298,7 +297,6 @@
     async function checkAdBlock() {
       let isAdBlockActive = false;
 
-      // 1. Kiểm tra qua Fake Element
       const fakeAd = document.createElement('div');
       fakeAd.innerHTML = '&nbsp;';
       fakeAd.className = 'adsbox ad-zone ad-space doubleclick google-ad';
@@ -310,7 +308,6 @@
       }
       fakeAd.remove();
 
-      // 2. Kiểm tra qua Fetch URL Ads
       if (!isAdBlockActive) {
         try {
           await fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', { method: 'HEAD', mode: 'no-cors' });
@@ -319,7 +316,6 @@
         }
       }
 
-      // Hiển thị Popup nếu bật Adblock
       if (isAdBlockActive) {
         const overlay = document.getElementById('adblockOverlay');
         if (overlay) overlay.classList.remove('hidden');
