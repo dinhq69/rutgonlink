@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rutgon.dinhq.io.vn</title>
+  <title>rutgon.dinhq.io.vn — Dinh Q.</title>
   
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="logo.png" />
@@ -31,7 +31,7 @@
       <img src="logo.png" alt="Logo" class="w-9 h-9 object-contain rounded-full shadow" />
       <div>
         <span class="font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white block leading-tight">rutgon.dinhq.io.vn</span>
-        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Developed by Gemini</span>
+        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Developed by Dinh Q.</span>
       </div>
     </div>
 
@@ -57,14 +57,14 @@
           <img src="logo.png" alt="Logo Dinh Q" class="w-14 h-14 object-contain rounded-full" />
         </div>
         <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">Công cụ Đa năng</h1>
-        <p class="text-slate-500 dark:text-slate-400 text-xs">Rút gọn link, lưu trữ văn bản & tạo QR từ ảnh</p>
+        <p class="text-slate-500 dark:text-slate-400 text-xs">Rút gọn link, lưu trữ văn bản & tạo mã QR</p>
       </div>
 
       <!-- Tab Chuyển Đổi -->
       <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 dark:bg-slate-950 rounded-xl mb-6 border border-slate-200 dark:border-slate-800/80 text-center">
         <button id="tabLink" onclick="switchTab('link')" class="py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all">Link (nk)</button>
         <button id="tabText" onclick="switchTab('text')" class="py-2.5 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Plaintext (file) 🔒</button>
-        <button id="tabQr" onclick="switchTab('qr')" class="py-2.5 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">QR Ảnh (qr) 📷</button>
+        <button id="tabQr" onclick="switchTab('qr')" class="py-2.5 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Tạo QR Code 📱</button>
       </div>
 
       <!-- Form 1: Rút Gọn Link -->
@@ -139,52 +139,39 @@
         </button>
       </form>
 
-      <!-- Form 3: QR Từ Hình Ảnh -->
+      <!-- Form 3: Tạo QR từ Link -->
       <form id="qrForm" class="space-y-4 hidden">
         <div>
-          <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Chọn hình ảnh</label>
-          <label for="qrImageInput" class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-amber-500 rounded-xl cursor-pointer bg-slate-50 dark:bg-slate-950/60 transition-all p-4">
-            <div id="imagePreviewContainer" class="flex flex-col items-center justify-center">
-              <svg class="w-8 h-8 mb-2 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <p class="text-xs text-slate-500 dark:text-slate-400"><span class="font-semibold text-amber-500">Bấm để chọn ảnh</span> hoặc kéo thả vào đây</p>
-              <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-1">PNG, JPG, JPEG, WEBP (Tối đa 10MB)</p>
-            </div>
-            <img id="imagePreview" class="hidden max-h-28 object-contain rounded-lg" alt="Preview" />
-            <input type="file" id="qrImageInput" accept="image/*" class="hidden" onchange="previewImage(event)" />
-          </label>
-        </div>
-
-        <div>
-          <label for="qrCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link QR (Không bắt buộc)</label>
-          <div class="flex items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 focus-within:border-amber-500">
-            <span class="text-xs text-slate-400 dark:text-slate-500 select-none">qr.dinhq.io.vn/</span>
-            <input 
-              type="text" 
-              id="qrCustom" 
-              placeholder="Để trống sẽ tạo 4 ký tự" 
-              class="w-full py-3.5 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none text-sm pl-1"
-            >
-          </div>
+          <label for="qrUrlInput" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Đường dẫn / Nội dung tạo Mã QR</label>
+          <input 
+            type="text" 
+            id="qrUrlInput" 
+            placeholder="https://example.com hoặc văn bản bất kỳ..." 
+            required
+            class="w-full px-4 py-3.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-amber-500 text-sm"
+          >
         </div>
 
         <button type="submit" id="submitQrBtn" class="w-full py-3.5 px-4 bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white font-semibold rounded-xl transition-all text-sm shadow-lg shadow-amber-600/20">
-          <span>Tạo Mã QR Tải Ảnh</span>
+          <span>Tạo Mã QR ngay</span>
         </button>
       </form>
 
       <!-- Kết quả -->
       <div id="resultBox" class="hidden mt-6 pt-6 border-t border-slate-200 dark:border-slate-800/80">
-        <label id="resultLabel" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Đường dẫn kết quả</label>
-        <div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-2 rounded-xl mb-3">
-          <input type="text" id="resultInput" readonly class="w-full bg-transparent px-3 font-medium text-sm focus:outline-none">
-          <button id="copyBtn" onclick="copyResult()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition-all shrink-0">Sao chép</button>
+        <div id="linkResultContainer">
+          <label id="resultLabel" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Đường dẫn kết quả</label>
+          <div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-2 rounded-xl mb-3">
+            <input type="text" id="resultInput" readonly class="w-full bg-transparent px-3 font-medium text-sm focus:outline-none">
+            <button id="copyBtn" onclick="copyResult()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition-all shrink-0">Sao chép</button>
+          </div>
         </div>
 
-        <!-- Khung hiển thị Mã QR Preview -->
+        <!-- Khung hiển thị Mã QR -->
         <div id="qrCodeDisplayContainer" class="hidden flex flex-col items-center justify-center p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl mt-3">
-          <p class="text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">Mã QR truy cập ảnh:</p>
-          <img id="generatedQrImage" src="" alt="Mã QR" class="w-40 h-40 bg-white p-2 rounded-lg shadow-md mb-2" />
-          <a id="downloadQrBtn" href="" download="qr-code.png" target="_blank" class="text-xs text-amber-500 hover:underline">Tải mã QR này về máy</a>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">Mã QR của bạn:</p>
+          <img id="generatedQrImage" src="" alt="Mã QR" class="w-44 h-44 bg-white p-2 rounded-lg shadow-md mb-3" />
+          <a id="downloadQrBtn" href="" download="qr-code.png" target="_blank" class="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold rounded-lg transition-all">Tải mã QR về máy</a>
         </div>
       </div>
 
@@ -197,12 +184,11 @@
     <span>&copy; 2026 rutgon.dinhq.io.vn — Dinh Q.</span>
   </footer>
 
-  <!-- Script Xử Lý Theme Sáng / Tối -->
+  <!-- Script Theme Sáng / Tối -->
   <script>
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
 
-    // Khởi tạo giao diện theo bộ nhớ hoặc hệ thống
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
       sunIcon.classList.remove('hidden');
@@ -226,7 +212,7 @@
     }
   </script>
 
-  <!-- JS Logic Trang -->
+  <!-- JS Logic -->
   <script>
     function switchTab(type) {
       const linkForm = document.getElementById('linkForm');
@@ -260,28 +246,13 @@
       }
     }
 
-    function previewImage(event) {
-      const file = event.target.files[0];
-      const preview = document.getElementById('imagePreview');
-      const container = document.getElementById('imagePreviewContainer');
-      
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          preview.src = e.target.result;
-          preview.classList.remove('hidden');
-          container.classList.add('hidden');
-        }
-        reader.readAsDataURL(file);
-      }
-    }
-
     // Form Submit Handlers
     document.getElementById('linkForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitLinkBtn');
       btn.disabled = true; btn.innerText = 'Đang xử lý...';
       document.getElementById('qrCodeDisplayContainer').classList.add('hidden');
+      document.getElementById('linkResultContainer').classList.remove('hidden');
 
       try {
         const res = await fetch('/api/shorten', {
@@ -308,6 +279,7 @@
       const btn = document.getElementById('submitTextBtn');
       btn.disabled = true; btn.innerText = 'Đang xử lý...';
       document.getElementById('qrCodeDisplayContainer').classList.add('hidden');
+      document.getElementById('linkResultContainer').classList.remove('hidden');
 
       try {
         const res = await fetch('/api/paste', {
@@ -330,42 +302,20 @@
       finally { btn.disabled = false; btn.innerText = 'Lưu Văn Bản Bảo Mật'; }
     });
 
-    document.getElementById('qrForm').addEventListener('submit', async (e) => {
+    // Form 3: Tạo QR từ URL (Client-Side API)
+    document.getElementById('qrForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = document.getElementById('submitQrBtn');
-      const fileInput = document.getElementById('qrImageInput');
+      const inputVal = document.getElementById('qrUrlInput').value.trim();
+      if (!inputVal) return;
+
+      document.getElementById('linkResultContainer').classList.add('hidden');
       
-      if (!fileInput.files || !fileInput.files[0]) {
-        alert('Vui lòng chọn một hình ảnh!');
-        return;
-      }
-
-      btn.disabled = true; btn.innerText = 'Đang tải ảnh & tạo QR...';
-
-      const formData = new FormData();
-      formData.append('image', fileInput.files[0]);
-      formData.append('customSlug', document.getElementById('qrCustom').value);
-
-      try {
-        const res = await fetch('/api/qr-image', {
-          method: 'POST',
-          body: formData
-        });
-        const data = await res.json();
-        if (data.success) {
-          document.getElementById('resultLabel').innerText = 'Đường dẫn QR Ảnh (qr.dinhq.io.vn):';
-          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-amber-600 dark:text-amber-400 font-medium text-sm focus:outline-none';
-          document.getElementById('resultInput').value = data.qrUrl;
-
-          const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(data.qrUrl)}`;
-          document.getElementById('generatedQrImage').src = qrApiUrl;
-          document.getElementById('downloadQrBtn').href = qrApiUrl;
-          document.getElementById('qrCodeDisplayContainer').classList.remove('hidden');
-
-          document.getElementById('resultBox').classList.remove('hidden');
-        } else { alert(data.error); }
-      } catch (err) { alert('Không thể kết nối máy chủ!'); }
-      finally { btn.disabled = false; btn.innerText = 'Tạo Mã QR Tải Ảnh'; }
+      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(inputVal)}`;
+      document.getElementById('generatedQrImage').src = qrApiUrl;
+      document.getElementById('downloadQrBtn').href = qrApiUrl;
+      
+      document.getElementById('qrCodeDisplayContainer').classList.remove('hidden');
+      document.getElementById('resultBox').classList.remove('hidden');
     });
 
     function copyResult() {
