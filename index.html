@@ -3,19 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rutgon.dinhq.io.vn — Dinh Q.</title>
+  <title>rutgon.dinhq.io.vn — dinhq</title>
   
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="logo.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="logo.png" />
-  <link rel="shortcut icon" href="logo.png" />
-
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-    }
-  </script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s, color 0.3s; }
@@ -26,16 +18,15 @@
 <body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8 relative bg-slate-50 dark:bg-[#0b0f19] text-slate-800 dark:text-fuchsia-50">
 
   <!-- Header -->
-  <header class="w-full max-w-2xl flex justify-between items-center py-4 z-20">
+  <header class="w-full max-w-3xl flex justify-between items-center py-4 z-20">
     <div class="flex items-center gap-3">
       <img src="logo.png" alt="Logo" class="w-9 h-9 object-contain rounded-full shadow" />
       <div>
         <span class="font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white block leading-tight">rutgon.dinhq.io.vn</span>
-        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Developed by Dinh Q.</span>
+        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Developed by dinhq</span>
       </div>
     </div>
 
-    <!-- Toggle Theme & Badge -->
     <div class="flex items-center gap-3">
       <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
         <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -46,16 +37,16 @@
   </header>
 
   <!-- Main Container -->
-  <main class="w-full max-w-xl my-auto z-20">
+  <main class="w-full max-w-3xl my-auto z-20">
     <div id="mainCard" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl transition-all glow-effect-light dark:glow-effect-dark">
       
       <!-- Logo Main -->
       <div class="text-center mb-6">
         <div class="inline-block p-3 bg-slate-100 dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-slate-800/80 mb-3">
-          <img src="logo.png" alt="Logo Dinh Q" class="w-14 h-14 object-contain rounded-full" />
+          <img src="logo.png" alt="Logo dinhq" class="w-14 h-14 object-contain rounded-full" />
         </div>
-        <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">Bộ Công Cụ Đa Năng</h1>
-        <p class="text-slate-500 dark:text-slate-400 text-xs">Rút gọn link, lưu trữ văn bản & Tạo QR đa dạng chuẩn Me-QR</p>
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">Trình Tạo QR & Công Cụ Đa Năng</h1>
+        <p class="text-slate-500 dark:text-slate-400 text-xs">Hỗ trợ đầy đủ các loại mã QR như Me-QR</p>
       </div>
 
       <!-- Tab Chuyển Đổi -->
@@ -101,28 +92,36 @@
         <button type="submit" id="submitTextBtn" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-semibold rounded-xl transition-all text-sm shadow-lg shadow-emerald-600/20">Lưu Văn Bản Bảo Mật</button>
       </form>
 
-      <!-- Form 3: Trình Tạo Mã QR Phong Cách Me-QR -->
+      <!-- Form 3: Me-QR Grid Chọn Danh Mục -->
       <div id="qrForm" class="space-y-4 hidden">
-        <!-- Chọn Loại Nội Dung QR -->
-        <div>
-          <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Chọn loại mã QR</label>
-          <div class="grid grid-cols-3 gap-2">
-            <button type="button" onclick="selectQrType('url')" id="qrTypeUrl" class="py-2 px-3 text-xs font-medium rounded-lg border border-amber-500 bg-amber-500/10 text-amber-500 flex items-center justify-center gap-1.5 transition-all">🔗 Link Web</button>
-            <button type="button" onclick="selectQrType('wifi')" id="qrTypeWifi" class="py-2 px-3 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-amber-500 flex items-center justify-center gap-1.5 transition-all">📶 Wi-Fi</button>
-            <button type="button" onclick="selectQrType('text')" id="qrTypeText" class="py-2 px-3 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-amber-500 flex items-center justify-center gap-1.5 transition-all">📝 Văn bản</button>
-          </div>
+        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Chọn loại mã QR cần tạo</label>
+        
+        <!-- Grid Danh Mục Phong Cách Me-QR -->
+        <div class="flex flex-wrap gap-2 max-h-56 overflow-y-auto p-1 scrollbar-thin">
+          <button type="button" onclick="setCategory('url', 'Mạng xã hội / Đường dẫn URL', 'https://...')" class="cat-btn bg-amber-500 text-white font-semibold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow transition-all">🔗 Liên kết / URL</button>
+          <button type="button" onclick="setCategory('url', 'Facebook', 'https://facebook.com/username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📘 Facebook</button>
+          <button type="button" onclick="setCategory('url', 'TikTok', 'https://tiktok.com/@username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">🎵 TikTok</button>
+          <button type="button" onclick="setCategory('url', 'YouTube', 'https://youtube.com/c/channel')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">▶️ YouTube</button>
+          <button type="button" onclick="setCategory('wifi', 'Wi-Fi', '')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📶 Wi-Fi</button>
+          <button type="button" onclick="setCategory('text', 'Văn bản / Lời nhắn', 'Nhập văn bản...')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📝 Văn bản</button>
+          <button type="button" onclick="setCategory('url', 'Google Maps', 'https://maps.google.com/?q=...')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📍 Google Maps</button>
+          <button type="button" onclick="setCategory('url', 'Telegram', 'https://t.me/username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">✈️ Telegram</button>
+          <button type="button" onclick="setCategory('url', 'Instagram', 'https://instagram.com/username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📸 Instagram</button>
+          <button type="button" onclick="setCategory('url', 'PDF / Tệp tài liệu', 'https://example.com/file.pdf')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📄 PDF / Tệp</button>
+          <button type="button" onclick="setCategory('url', 'Thanh toán / PayPal', 'https://paypal.me/username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">💳 Thanh toán</button>
+          <button type="button" onclick="setCategory('url', 'Spotify', 'https://open.spotify.com/track/...')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">🎧 Spotify</button>
         </div>
 
-        <!-- Input Dynamic -->
-        <form id="qrInnerForm" class="space-y-4">
-          <!-- Type URL -->
+        <!-- Dynamic Form Body -->
+        <form id="qrInnerForm" class="space-y-4 pt-2">
+          <!-- Nhập URL -->
           <div id="qrInputUrlGroup" class="space-y-3">
             <div>
-              <label for="qrUrlInput" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Đường dẫn gốc</label>
-              <input type="url" id="qrUrlInput" placeholder="https://example.com/link-can-tao-qr..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-amber-500 text-sm">
+              <label id="qrUrlLabel" for="qrUrlInput" class="block text-xs font-medium text-amber-500 font-semibold uppercase tracking-wider mb-1">Link URL</label>
+              <input type="url" id="qrUrlInput" placeholder="https://example.com/..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-amber-500 text-sm">
             </div>
             <div>
-              <label for="qrCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Tùy chỉnh link (Không bắt buộc)</label>
+              <label for="qrCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Tùy chỉnh link QR (Chuyển hướng qr.dinhq.io.vn)</label>
               <div class="flex items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 focus-within:border-amber-500">
                 <span class="text-xs text-slate-400 dark:text-slate-500 select-none">qr.dinhq.io.vn/</span>
                 <input type="text" id="qrCustom" placeholder="Để trống sẽ tạo 4 ký tự" class="w-full py-3 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none text-sm pl-1">
@@ -130,7 +129,7 @@
             </div>
           </div>
 
-          <!-- Type WiFi -->
+          <!-- Nhập Wifi -->
           <div id="qrInputWifiGroup" class="space-y-3 hidden">
             <div>
               <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Tên Mạng Wi-Fi (SSID)</label>
@@ -142,26 +141,24 @@
             </div>
           </div>
 
-          <!-- Type Plain Text -->
+          <!-- Nhập Text -->
           <div id="qrInputTextGroup" class="space-y-3 hidden">
             <div>
-              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Nội dung hiển thị</label>
-              <textarea id="plainQrText" rows="3" placeholder="Nhập văn bản hoặc lời nhắn..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white text-sm"></textarea>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Nội dung văn bản</label>
+              <textarea id="plainQrText" rows="3" placeholder="Nhập văn bản..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white text-sm"></textarea>
             </div>
           </div>
 
-          <!-- Tùy chọn Màu sắc Mã QR (Me-QR Style) -->
-          <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Màu sắc mã QR</label>
-            <div class="flex items-center gap-4">
-              <div class="flex items-center gap-2">
-                <span class="text-xs text-slate-600 dark:text-slate-400">Màu QR:</span>
-                <input type="color" id="qrColorDark" value="#000000" class="w-8 h-8 rounded border-0 cursor-pointer bg-transparent">
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs text-slate-600 dark:text-slate-400">Màu nền:</span>
-                <input type="color" id="qrColorLight" value="#ffffff" class="w-8 h-8 rounded border-0 cursor-pointer bg-transparent">
-              </div>
+          <!-- Chọn màu QR -->
+          <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center gap-6">
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Màu sắc:</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-600 dark:text-slate-400">Mã QR:</span>
+              <input type="color" id="qrColorDark" value="#000000" class="w-7 h-7 rounded border-0 cursor-pointer bg-transparent">
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-600 dark:text-slate-400">Màu nền:</span>
+              <input type="color" id="qrColorLight" value="#ffffff" class="w-7 h-7 rounded border-0 cursor-pointer bg-transparent">
             </div>
           </div>
 
@@ -179,7 +176,6 @@
           </div>
         </div>
 
-        <!-- Khung hiển thị Mã QR Me-QR -->
         <div id="qrCodeDisplayContainer" class="hidden flex flex-col items-center justify-center p-5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl mt-3">
           <p class="text-xs text-slate-500 dark:text-slate-400 mb-3 font-medium">Mã QR của bạn đã sẵn sàng:</p>
           <div class="p-3 bg-white rounded-xl shadow-lg mb-4">
@@ -194,11 +190,11 @@
 
   <!-- Footer -->
   <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-500 dark:text-slate-600 flex items-center justify-center gap-2 z-20">
-    <img src="logo.png" alt="Icon Dinh Q" class="w-4 h-4 object-contain opacity-60 rounded-full" />
-    <span>&copy; 2026 rutgon.dinhq.io.vn — Dinh Q.</span>
+    <img src="logo.png" alt="Icon dinhq" class="w-4 h-4 object-contain opacity-60 rounded-full" />
+    <span>&copy; 2026 rutgon.dinhq.io.vn — dinhq</span>
   </footer>
 
-  <!-- Script Theme Sáng / Tối -->
+  <!-- Script Theme & Logic -->
   <script>
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
@@ -224,59 +220,51 @@
         sunIcon.classList.remove('hidden');
       }
     }
-  </script>
 
-  <!-- JS Logic -->
-  <script>
-    let currentQrType = 'url';
+    let currentQrCategory = 'url';
 
     function switchTab(type) {
-      const linkForm = document.getElementById('linkForm');
-      const textForm = document.getElementById('textForm');
-      const qrForm = document.getElementById('qrForm');
-      const tabLink = document.getElementById('tabLink');
-      const tabText = document.getElementById('tabText');
-      const tabQr = document.getElementById('tabQr');
-      const resultBox = document.getElementById('resultBox');
-
-      resultBox.classList.add('hidden');
-
+      document.getElementById('resultBox').classList.add('hidden');
       const inactiveStyle = 'py-2.5 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all';
-      tabLink.className = inactiveStyle;
-      tabText.className = inactiveStyle;
-      tabQr.className = inactiveStyle;
-
-      linkForm.classList.add('hidden');
-      textForm.classList.add('hidden');
-      qrForm.classList.add('hidden');
+      
+      ['tabLink', 'tabText', 'tabQr'].forEach(id => document.getElementById(id).className = inactiveStyle);
+      ['linkForm', 'textForm', 'qrForm'].forEach(id => document.getElementById(id).classList.add('hidden'));
 
       if (type === 'link') {
-        linkForm.classList.remove('hidden');
-        tabLink.className = 'py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all';
+        document.getElementById('linkForm').classList.remove('hidden');
+        document.getElementById('tabLink').className = 'py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all';
       } else if (type === 'text') {
-        textForm.classList.remove('hidden');
-        tabText.className = 'py-2.5 text-xs font-semibold rounded-lg bg-emerald-600 text-white transition-all';
+        document.getElementById('textForm').classList.remove('hidden');
+        document.getElementById('tabText').className = 'py-2.5 text-xs font-semibold rounded-lg bg-emerald-600 text-white transition-all';
       } else if (type === 'qr') {
-        qrForm.classList.remove('hidden');
-        tabQr.className = 'py-2.5 text-xs font-semibold rounded-lg bg-amber-600 text-white transition-all';
+        document.getElementById('qrForm').classList.remove('hidden');
+        document.getElementById('tabQr').className = 'py-2.5 text-xs font-semibold rounded-lg bg-amber-600 text-white transition-all';
       }
     }
 
-    function selectQrType(type) {
-      currentQrType = type;
-      const activeClass = 'py-2 px-3 text-xs font-medium rounded-lg border border-amber-500 bg-amber-500/10 text-amber-500 flex items-center justify-center gap-1.5 transition-all';
-      const inactiveClass = 'py-2 px-3 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-amber-500 flex items-center justify-center gap-1.5 transition-all';
-
-      document.getElementById('qrTypeUrl').className = type === 'url' ? activeClass : inactiveClass;
-      document.getElementById('qrTypeWifi').className = type === 'wifi' ? activeClass : inactiveClass;
-      document.getElementById('qrTypeText').className = type === 'text' ? activeClass : inactiveClass;
+    function setCategory(type, label, placeholder) {
+      currentQrCategory = type;
+      
+      // Update Button Styles
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.innerText.includes(label)) {
+          btn.className = 'cat-btn bg-amber-500 text-white font-semibold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow transition-all';
+        } else {
+          btn.className = 'cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all';
+        }
+      });
 
       document.getElementById('qrInputUrlGroup').classList.toggle('hidden', type !== 'url');
       document.getElementById('qrInputWifiGroup').classList.toggle('hidden', type !== 'wifi');
       document.getElementById('qrInputTextGroup').classList.toggle('hidden', type !== 'text');
+
+      if (type === 'url') {
+        document.getElementById('qrUrlLabel').innerText = `Nhập URL cho ${label}`;
+        document.getElementById('qrUrlInput').placeholder = placeholder;
+      }
     }
 
-    // Form 1 & 2 Handlers
+    // Handlers
     document.getElementById('linkForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitLinkBtn');
@@ -332,7 +320,6 @@
       finally { btn.disabled = false; btn.innerText = 'Lưu Văn Bản Bảo Mật'; }
     });
 
-    // Form 3: Me-QR Generator Handler
     document.getElementById('qrInnerForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitQrBtn');
@@ -342,7 +329,7 @@
       const colorDark = document.getElementById('qrColorDark').value.replace('#', '');
       const colorLight = document.getElementById('qrColorLight').value.replace('#', '');
 
-      if (currentQrType === 'url') {
+      if (currentQrCategory === 'url') {
         const targetUrl = document.getElementById('qrUrlInput').value.trim();
         const customSlug = document.getElementById('qrCustom').value.trim();
         try {
@@ -358,22 +345,14 @@
             document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-amber-600 dark:text-amber-400 font-medium text-sm focus:outline-none';
             document.getElementById('resultInput').value = data.qrUrl;
             document.getElementById('linkResultContainer').classList.remove('hidden');
-          } else {
-            alert(data.error);
-            btn.disabled = false; btn.innerText = 'Tạo Mã QR Ngay';
-            return;
-          }
-        } catch (err) {
-          alert('Không thể kết nối máy chủ!');
-          btn.disabled = false; btn.innerText = 'Tạo Mã QR Ngay';
-          return;
-        }
-      } else if (currentQrType === 'wifi') {
+          } else { alert(data.error); btn.disabled = false; btn.innerText = 'Tạo Mã QR Ngay'; return; }
+        } catch (err) { alert('Không thể kết nối máy chủ!'); btn.disabled = false; btn.innerText = 'Tạo Mã QR Ngay'; return; }
+      } else if (currentQrCategory === 'wifi') {
         const ssid = document.getElementById('wifiSsid').value.trim();
         const pass = document.getElementById('wifiPass').value.trim();
         qrPayloadContent = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
         document.getElementById('linkResultContainer').classList.add('hidden');
-      } else if (currentQrType === 'text') {
+      } else if (currentQrCategory === 'text') {
         qrPayloadContent = document.getElementById('plainQrText').value.trim();
         document.getElementById('linkResultContainer').classList.add('hidden');
       }
@@ -382,11 +361,9 @@
         const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=${colorDark}&bgcolor=${colorLight}&data=${encodeURIComponent(qrPayloadContent)}`;
         document.getElementById('generatedQrImage').src = qrApiUrl;
         document.getElementById('downloadQrBtn').href = qrApiUrl;
-
         document.getElementById('qrCodeDisplayContainer').classList.remove('hidden');
         document.getElementById('resultBox').classList.remove('hidden');
       }
-
       btn.disabled = false; btn.innerText = 'Tạo Mã QR Ngay';
     });
 
