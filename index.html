@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="dark">
 <head>
-  <!-- MONETAG MULTITAG CODE -->
-  <script src="https://quge5.com/88/tag.min.js" data-zone="268344" async data-cfasync="false"></script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>rutgon.dinhq.io.vn — Dinh Q.</title>
@@ -14,114 +11,84 @@
   <link rel="shortcut icon" href="logo.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
-    .glow-effect { box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15); }
-    
-    /* Khung quảng cáo 2 bên PC */
-    .ad-banner-side {
-      width: 160px;
-      height: 600px;
-    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s, color 0.3s; }
+    .glow-effect-dark { box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15); }
+    .glow-effect-light { box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05); }
   </style>
-
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8 relative pb-20 sm:pb-8">
-
-  <!-- ================= QUẢNG CÁO BÊN TRÁI PC (BANNER 160x600 ADSTERRA) ================= -->
-  <aside class="hidden xl:block fixed left-4 top-1/2 -translate-y-1/2 z-10">
-    <div class="ad-banner-side bg-slate-900/50 border border-slate-800 rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden">
-      <span class="text-[10px] text-slate-500 uppercase font-semibold mb-2 block">Quảng cáo</span>
-      
-      <!-- CODE ADSTERRA BANNER 160x600 TRÁI -->
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '5b802ec9a96551fd32993f4573f27f8c',
-          'format' : 'iframe',
-          'height' : 600,
-          'width' : 160,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="https://www.highperformanceformat.com/5b802ec9a96551fd32993f4573f27f8c/invoke.js"></script>
-
-    </div>
-  </aside>
-
-  <!-- ================= QUẢNG CÁO BÊN PHẢI PC (BANNER 160x600 ADSTERRA) ================= -->
-  <aside class="hidden xl:block fixed right-4 top-1/2 -translate-y-1/2 z-10">
-    <div class="ad-banner-side bg-slate-900/50 border border-slate-800 rounded-xl p-2 flex flex-col items-center justify-center text-center overflow-hidden">
-      <span class="text-[10px] text-slate-500 uppercase font-semibold mb-2 block">Quảng cáo</span>
-      
-      <!-- CODE ADSTERRA BANNER 160x600 PHẢI -->
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '5b802ec9a96551fd32993f4573f27f8c',
-          'format' : 'iframe',
-          'height' : 600,
-          'width' : 160,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="https://www.highperformanceformat.com/5b802ec9a96551fd32993f4573f27f8c/invoke.js"></script>
-
-    </div>
-  </aside>
+<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-8 relative bg-slate-50 dark:bg-[#0b0f19] text-slate-800 dark:text-fuchsia-50">
 
   <!-- Header -->
   <header class="w-full max-w-2xl flex justify-between items-center py-4 z-20">
     <div class="flex items-center gap-3">
       <img src="logo.png" alt="Logo" class="w-9 h-9 object-contain rounded-full shadow" />
       <div>
-        <span class="font-bold text-base sm:text-lg tracking-tight text-white block leading-tight">rutgon.dinhq.io.vn</span>
-        <span class="text-[11px] text-slate-400 font-medium">Developed by Dinh Q.</span>
+        <span class="font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white block leading-tight">rutgon.dinhq.io.vn</span>
+        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Developed by Dinh Q.</span>
       </div>
     </div>
-    <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800/80 text-slate-400 border border-slate-700/50 hidden sm:inline-block">Dinh Q. Shortener</span>
+
+    <!-- Toggle Theme & Badge -->
+    <div class="flex items-center gap-3">
+      <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
+        <!-- Sun Icon -->
+        <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        <!-- Moon Icon -->
+        <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+      </button>
+      <span class="text-xs px-2.5 py-1 rounded-full bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-slate-700/50 hidden sm:inline-block">Dinh Q. Tools</span>
+    </div>
   </header>
 
   <!-- Main Container -->
   <main class="w-full max-w-xl my-auto z-20">
-    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glow-effect">
+    <div id="mainCard" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 backdrop-blur-xl transition-all glow-effect-light dark:glow-effect-dark">
       
       <!-- Logo Main -->
       <div class="text-center mb-6">
-        <div class="inline-block p-3 bg-slate-950/60 rounded-2xl border border-slate-800/80 mb-3">
+        <div class="inline-block p-3 bg-slate-100 dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-slate-800/80 mb-3">
           <img src="logo.png" alt="Logo Dinh Q" class="w-14 h-14 object-contain rounded-full" />
         </div>
-        <h1 class="text-2xl font-bold text-white tracking-tight mb-1">Rút gọn & Lưu văn bản</h1>
-        <p class="text-slate-400 text-xs">Hệ thống công cụ tiện ích cá nhân của Dinh Q.</p>
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">Công cụ Đa năng</h1>
+        <p class="text-slate-500 dark:text-slate-400 text-xs">Rút gọn link, lưu trữ văn bản & tạo QR từ ảnh</p>
       </div>
 
       <!-- Tab Chuyển Đổi -->
-      <div class="flex gap-2 p-1 bg-slate-950 rounded-xl mb-6 border border-slate-800/80">
-        <button id="tabLink" onclick="switchTab('link')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all">Rút Gọn Link (nk)</button>
-        <button id="tabText" onclick="switchTab('text')" class="flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all">Lưu Plaintext (file) 🔒</button>
+      <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 dark:bg-slate-950 rounded-xl mb-6 border border-slate-200 dark:border-slate-800/80 text-center">
+        <button id="tabLink" onclick="switchTab('link')" class="py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all">Link (nk)</button>
+        <button id="tabText" onclick="switchTab('text')" class="py-2.5 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Plaintext (file) 🔒</button>
+        <button id="tabQr" onclick="switchTab('qr')" class="py-2.5 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">QR Ảnh (qr) 📷</button>
       </div>
 
       <!-- Form 1: Rút Gọn Link -->
       <form id="linkForm" class="space-y-4">
         <div>
-          <label for="urlInput" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Đường dẫn gốc</label>
+          <label for="urlInput" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Đường dẫn gốc</label>
           <input 
             type="url" 
             id="urlInput" 
             placeholder="https://example.com/duong-dan-rat-dai..." 
             required
-            class="w-full px-4 py-3.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 text-sm"
+            class="w-full px-4 py-3.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-indigo-500 text-sm"
           >
         </div>
 
         <div>
-          <label for="linkCustom" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link (Không bắt buộc)</label>
-          <div class="flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 focus-within:border-indigo-500">
-            <span class="text-xs text-slate-500 select-none">nk.dinhq.io.vn/</span>
+          <label for="linkCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link (Không bắt buộc)</label>
+          <div class="flex items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 focus-within:border-indigo-500">
+            <span class="text-xs text-slate-400 dark:text-slate-500 select-none">nk.dinhq.io.vn/</span>
             <input 
               type="text" 
               id="linkCustom" 
               placeholder="Để trống sẽ tạo 4 ký tự" 
-              class="w-full py-3.5 bg-transparent text-white placeholder-slate-600 focus:outline-none text-sm pl-1"
+              class="w-full py-3.5 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none text-sm pl-1"
             >
           </div>
         </div>
@@ -134,35 +101,35 @@
       <!-- Form 2: Plaintext -->
       <form id="textForm" class="space-y-4 hidden">
         <div>
-          <label for="textContent" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Nội dung văn bản</label>
+          <label for="textContent" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Nội dung văn bản</label>
           <textarea 
             id="textContent" 
             rows="5" 
             placeholder="Nhập nội dung cần lưu trữ bảo mật..." 
             required 
-            class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm font-mono"
+            class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm font-mono"
           ></textarea>
         </div>
         <div>
-          <label for="textPassword" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Mật khẩu bảo vệ</label>
+          <label for="textPassword" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Mật khẩu bảo vệ</label>
           <input 
             type="password" 
             id="textPassword" 
             placeholder="Nhập mật khẩu khóa ghi chú..." 
             required 
-            class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm"
+            class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm"
           >
         </div>
 
         <div>
-          <label for="textCustom" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link (Không bắt buộc)</label>
-          <div class="flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 focus-within:border-emerald-500">
-            <span class="text-xs text-slate-500 select-none">file.dinhq.io.vn/</span>
+          <label for="textCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link (Không bắt buộc)</label>
+          <div class="flex items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 focus-within:border-emerald-500">
+            <span class="text-xs text-slate-400 dark:text-slate-500 select-none">file.dinhq.io.vn/</span>
             <input 
               type="text" 
               id="textCustom" 
               placeholder="Để trống sẽ tạo 4 ký tự" 
-              class="w-full py-3.5 bg-transparent text-white placeholder-slate-600 focus:outline-none text-sm pl-1"
+              class="w-full py-3.5 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none text-sm pl-1"
             >
           </div>
         </div>
@@ -172,12 +139,52 @@
         </button>
       </form>
 
+      <!-- Form 3: QR Từ Hình Ảnh -->
+      <form id="qrForm" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Chọn hình ảnh</label>
+          <label for="qrImageInput" class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-amber-500 rounded-xl cursor-pointer bg-slate-50 dark:bg-slate-950/60 transition-all p-4">
+            <div id="imagePreviewContainer" class="flex flex-col items-center justify-center">
+              <svg class="w-8 h-8 mb-2 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              <p class="text-xs text-slate-500 dark:text-slate-400"><span class="font-semibold text-amber-500">Bấm để chọn ảnh</span> hoặc kéo thả vào đây</p>
+              <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-1">PNG, JPG, JPEG, WEBP (Tối đa 10MB)</p>
+            </div>
+            <img id="imagePreview" class="hidden max-h-28 object-contain rounded-lg" alt="Preview" />
+            <input type="file" id="qrImageInput" accept="image/*" class="hidden" onchange="previewImage(event)" />
+          </label>
+        </div>
+
+        <div>
+          <label for="qrCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh link QR (Không bắt buộc)</label>
+          <div class="flex items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 focus-within:border-amber-500">
+            <span class="text-xs text-slate-400 dark:text-slate-500 select-none">qr.dinhq.io.vn/</span>
+            <input 
+              type="text" 
+              id="qrCustom" 
+              placeholder="Để trống sẽ tạo 4 ký tự" 
+              class="w-full py-3.5 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none text-sm pl-1"
+            >
+          </div>
+        </div>
+
+        <button type="submit" id="submitQrBtn" class="w-full py-3.5 px-4 bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white font-semibold rounded-xl transition-all text-sm shadow-lg shadow-amber-600/20">
+          <span>Tạo Mã QR Tải Ảnh</span>
+        </button>
+      </form>
+
       <!-- Kết quả -->
-      <div id="resultBox" class="hidden mt-6 pt-6 border-t border-slate-800/80">
-        <label id="resultLabel" class="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Đường dẫn kết quả</label>
-        <div class="flex items-center gap-2 bg-slate-950 border border-slate-800 p-2 rounded-xl">
+      <div id="resultBox" class="hidden mt-6 pt-6 border-t border-slate-200 dark:border-slate-800/80">
+        <label id="resultLabel" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Đường dẫn kết quả</label>
+        <div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-2 rounded-xl mb-3">
           <input type="text" id="resultInput" readonly class="w-full bg-transparent px-3 font-medium text-sm focus:outline-none">
-          <button id="copyBtn" onclick="copyResult()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg transition-all shrink-0">Sao chép</button>
+          <button id="copyBtn" onclick="copyResult()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition-all shrink-0">Sao chép</button>
+        </div>
+
+        <!-- Khung hiển thị Mã QR Preview -->
+        <div id="qrCodeDisplayContainer" class="hidden flex flex-col items-center justify-center p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl mt-3">
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">Mã QR truy cập ảnh:</p>
+          <img id="generatedQrImage" src="" alt="Mã QR" class="w-40 h-40 bg-white p-2 rounded-lg shadow-md mb-2" />
+          <a id="downloadQrBtn" href="" download="qr-code.png" target="_blank" class="text-xs text-amber-500 hover:underline">Tải mã QR này về máy</a>
         </div>
       </div>
 
@@ -185,77 +192,97 @@
   </main>
 
   <!-- Footer -->
-  <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-600 flex items-center justify-center gap-2 z-20">
+  <footer class="w-full max-w-2xl text-center py-4 text-xs text-slate-500 dark:text-slate-600 flex items-center justify-center gap-2 z-20">
     <img src="logo.png" alt="Icon Dinh Q" class="w-4 h-4 object-contain opacity-60 rounded-full" />
     <span>&copy; 2026 rutgon.dinhq.io.vn — Dinh Q.</span>
   </footer>
 
-  <!-- ================= QUẢNG CÁO DÍNH ĐÁY MOBILE (BANNER 320x50 ADSTERRA) ================= -->
-  <div class="block xl:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 border-t border-slate-800 p-1.5 flex flex-col items-center justify-center text-center shadow-2xl backdrop-blur-md">
-    <div class="w-full max-w-[320px] flex justify-between items-center px-1 mb-1">
-      <span class="text-[9px] text-slate-500 uppercase font-semibold">Quảng cáo</span>
-      <button onclick="this.parentElement.parentElement.remove()" class="text-[10px] text-slate-400 hover:text-white px-1">✕ Đóng</button>
-    </div>
-    
-    <!-- CODE ADSTERRA BANNER 320x50 MOBILE -->
-    <div class="flex items-center justify-center overflow-hidden">
-      <script type="text/javascript">
-        atOptions = {
-          'key' : '550752c982020c029f6a15a340e743ec',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="https://www.highperformanceformat.com/550752c982020c029f6a15a340e743ec/invoke.js"></script>
-    </div>
-  </div>
+  <!-- Script Xử Lý Theme Sáng / Tối -->
+  <script>
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
 
-  <!-- ================= POPUP PHÁT HIỆN ADBLOCK ================= -->
-  <div id="adblockOverlay" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-red-500/30 p-6 sm:p-8 rounded-2xl max-w-md w-full text-center shadow-2xl">
-      <div class="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold border border-red-500/20">
-        🚫
-      </div>
-      <h2 class="text-xl font-bold text-white mb-2">Phát hiện Trình chặn Quảng cáo!</h2>
-      <p class="text-slate-400 text-xs leading-relaxed mb-6">
-        Hệ thống phát hiện bạn đang bật <b class="text-red-400">AdBlock</b>. Vui lòng tắt trình chặn quảng cáo cho trang web này để ủng hộ duy trì máy chủ và tiếp tục sử dụng.
-      </p>
-      <button onclick="window.location.reload()" class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/30">
-        Tôi đã tắt Adblock — Tải lại trang
-      </button>
-    </div>
-  </div>
+    // Khởi tạo giao diện theo bộ nhớ hoặc hệ thống
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      sunIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      moonIcon.classList.remove('hidden');
+    }
 
-  <!-- JS Switch Tab & Form Handling -->
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        moonIcon.classList.add('hidden');
+        sunIcon.classList.remove('hidden');
+      }
+    }
+  </script>
+
+  <!-- JS Logic Trang -->
   <script>
     function switchTab(type) {
       const linkForm = document.getElementById('linkForm');
       const textForm = document.getElementById('textForm');
+      const qrForm = document.getElementById('qrForm');
       const tabLink = document.getElementById('tabLink');
       const tabText = document.getElementById('tabText');
+      const tabQr = document.getElementById('tabQr');
       const resultBox = document.getElementById('resultBox');
 
       resultBox.classList.add('hidden');
 
+      const inactiveStyle = 'py-2.5 text-xs font-semibold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all';
+      tabLink.className = inactiveStyle;
+      tabText.className = inactiveStyle;
+      tabQr.className = inactiveStyle;
+
+      linkForm.classList.add('hidden');
+      textForm.classList.add('hidden');
+      qrForm.classList.add('hidden');
+
       if (type === 'link') {
         linkForm.classList.remove('hidden');
-        textForm.classList.add('hidden');
-        tabLink.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all';
-        tabText.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all';
-      } else {
-        linkForm.classList.add('hidden');
+        tabLink.className = 'py-2.5 text-xs font-semibold rounded-lg bg-indigo-600 text-white transition-all';
+      } else if (type === 'text') {
         textForm.classList.remove('hidden');
-        tabText.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg bg-emerald-600 text-white transition-all';
-        tabLink.className = 'flex-1 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition-all';
+        tabText.className = 'py-2.5 text-xs font-semibold rounded-lg bg-emerald-600 text-white transition-all';
+      } else if (type === 'qr') {
+        qrForm.classList.remove('hidden');
+        tabQr.className = 'py-2.5 text-xs font-semibold rounded-lg bg-amber-600 text-white transition-all';
       }
     }
 
+    function previewImage(event) {
+      const file = event.target.files[0];
+      const preview = document.getElementById('imagePreview');
+      const container = document.getElementById('imagePreviewContainer');
+      
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+          preview.classList.remove('hidden');
+          container.classList.add('hidden');
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Form Submit Handlers
     document.getElementById('linkForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitLinkBtn');
       btn.disabled = true; btn.innerText = 'Đang xử lý...';
+      document.getElementById('qrCodeDisplayContainer').classList.add('hidden');
+
       try {
         const res = await fetch('/api/shorten', {
           method: 'POST',
@@ -268,7 +295,7 @@
         const data = await res.json();
         if (data.success) {
           document.getElementById('resultLabel').innerText = 'Đường dẫn ngắn (nk.dinhq.io.vn):';
-          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-indigo-400 font-medium text-sm focus:outline-none';
+          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-indigo-600 dark:text-indigo-400 font-medium text-sm focus:outline-none';
           document.getElementById('resultInput').value = data.shortUrl;
           document.getElementById('resultBox').classList.remove('hidden');
         } else { alert(data.error); }
@@ -280,6 +307,8 @@
       e.preventDefault();
       const btn = document.getElementById('submitTextBtn');
       btn.disabled = true; btn.innerText = 'Đang xử lý...';
+      document.getElementById('qrCodeDisplayContainer').classList.add('hidden');
+
       try {
         const res = await fetch('/api/paste', {
           method: 'POST',
@@ -293,12 +322,50 @@
         const data = await res.json();
         if (data.success) {
           document.getElementById('resultLabel').innerText = 'Đường dẫn Plaintext (file.dinhq.io.vn):';
-          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-emerald-400 font-medium text-sm focus:outline-none';
+          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-emerald-600 dark:text-emerald-400 font-medium text-sm focus:outline-none';
           document.getElementById('resultInput').value = data.pasteUrl;
           document.getElementById('resultBox').classList.remove('hidden');
         } else { alert(data.error); }
       } catch (err) { alert('Không thể kết nối máy chủ!'); }
       finally { btn.disabled = false; btn.innerText = 'Lưu Văn Bản Bảo Mật'; }
+    });
+
+    document.getElementById('qrForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitQrBtn');
+      const fileInput = document.getElementById('qrImageInput');
+      
+      if (!fileInput.files || !fileInput.files[0]) {
+        alert('Vui lòng chọn một hình ảnh!');
+        return;
+      }
+
+      btn.disabled = true; btn.innerText = 'Đang tải ảnh & tạo QR...';
+
+      const formData = new FormData();
+      formData.append('image', fileInput.files[0]);
+      formData.append('customSlug', document.getElementById('qrCustom').value);
+
+      try {
+        const res = await fetch('/api/qr-image', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('resultLabel').innerText = 'Đường dẫn QR Ảnh (qr.dinhq.io.vn):';
+          document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-amber-600 dark:text-amber-400 font-medium text-sm focus:outline-none';
+          document.getElementById('resultInput').value = data.qrUrl;
+
+          const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(data.qrUrl)}`;
+          document.getElementById('generatedQrImage').src = qrApiUrl;
+          document.getElementById('downloadQrBtn').href = qrApiUrl;
+          document.getElementById('qrCodeDisplayContainer').classList.remove('hidden');
+
+          document.getElementById('resultBox').classList.remove('hidden');
+        } else { alert(data.error); }
+      } catch (err) { alert('Không thể kết nối máy chủ!'); }
+      finally { btn.disabled = false; btn.innerText = 'Tạo Mã QR Tải Ảnh'; }
     });
 
     function copyResult() {
@@ -315,42 +382,7 @@
     }
   </script>
 
-  <!-- ================= SCRIPT PHÁT HIỆN ADBLOCK ================= -->
-  <script>
-    async function checkAdBlock() {
-      let isAdBlockActive = false;
-
-      const fakeAd = document.createElement('div');
-      fakeAd.innerHTML = '&nbsp;';
-      fakeAd.className = 'adsbox ad-zone ad-space doubleclick google-ad';
-      fakeAd.style.cssText = 'position: absolute; top: -9999px; left: -9999px; height: 1px; width: 1px;';
-      document.body.appendChild(fakeAd);
-
-      if (fakeAd.offsetHeight === 0 || fakeAd.clientHeight === 0) {
-        isAdBlockActive = true;
-      }
-      fakeAd.remove();
-
-      if (!isAdBlockActive) {
-        try {
-          await fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', { method: 'HEAD', mode: 'no-cors' });
-        } catch (e) {
-          isAdBlockActive = true;
-        }
-      }
-
-      if (isAdBlockActive) {
-        const overlay = document.getElementById('adblockOverlay');
-        if (overlay) overlay.classList.remove('hidden');
-      }
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(checkAdBlock, 800);
-    });
-  </script>
-
-  <!-- Anti-F12 / Anti-DevTools Script -->
+  <!-- Anti-DevTools Script -->
   <script>
     document.addEventListener('contextmenu', (e) => e.preventDefault());
     document.addEventListener('keydown', (e) => {
@@ -362,7 +394,7 @@
       const start = performance.now();
       debugger;
       if (performance.now() - start > 100) {
-        document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:20%;">Hành vi soi code bị cấm!</h1>';
+        document.body.innerHTML = '<h1 style="text-align:center;margin-top:20%;">Hành vi soi code bị cấm!</h1>';
       }
     }, 1000);
   </script>
