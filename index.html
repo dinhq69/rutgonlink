@@ -79,8 +79,8 @@
           <textarea id="textContent" rows="4" placeholder="Nhập văn bản cần lưu trữ..." required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm font-mono"></textarea>
         </div>
         <div>
-          <label for="textPassword" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Mật khẩu khóa</label>
-          <input type="password" id="textPassword" placeholder="Nhập mật khẩu để mở xem..." required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
+          <label for="textPassword" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Mật khẩu khóa (Không bắt buộc)</label>
+          <input type="password" id="textPassword" placeholder="Để trống nếu không muốn đặt mật khẩu..." class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-emerald-500 text-sm">
         </div>
         <div>
           <label for="textCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Tùy chỉnh đuôi link (Không bắt buộc)</label>
@@ -107,7 +107,7 @@
           <button type="button" onclick="setCategory('url', 'Google Maps', 'https://maps.google.com/?q=...')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📍 Google Maps</button>
           <button type="button" onclick="setCategory('url', 'Telegram', 'https://t.me/username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">✈️ Telegram</button>
           <button type="button" onclick="setCategory('url', 'Instagram', 'https://instagram.com/username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📸 Instagram</button>
-          <button type="button" onclick="setCategory('url', 'Tệp tài liệu', 'https://example.com/file.pdf')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📄 File / PDF</button>
+          <button type="button" onclick="setCategory('file', 'Tệp tài liệu', '')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">📄 File / PDF</button>
           <button type="button" onclick="setCategory('url', 'Thanh toán', 'https://paypal.me/username')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">💳 Thanh toán</button>
           <button type="button" onclick="setCategory('url', 'Spotify', 'https://open.spotify.com/track/...')" class="cat-btn bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 hover:bg-amber-500 hover:text-white transition-all">🎧 Spotify</button>
         </div>
@@ -125,6 +125,21 @@
               <div class="flex items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 focus-within:border-amber-500">
                 <span class="text-xs text-slate-400 dark:text-slate-500 select-none">qr.dinhq.io.vn/</span>
                 <input type="text" id="qrCustom" placeholder="Để trống sẽ tự động tạo" class="w-full py-3 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none text-sm pl-1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Nhập File/PDF Upload trực tiếp -->
+          <div id="qrInputFileGroup" class="space-y-3 hidden">
+            <div>
+              <label class="block text-xs font-semibold text-amber-500 uppercase tracking-wider mb-1">Tải tệp lên (PDF, Doc, Ảnh...)</label>
+              <input type="file" id="qrFileInput" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-white hover:file:bg-amber-600 cursor-pointer">
+            </div>
+            <div>
+              <label for="qrFileCustom" class="block text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Tùy chỉnh đuôi link (Không bắt buộc)</label>
+              <div class="flex items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 focus-within:border-amber-500">
+                <span class="text-xs text-slate-400 dark:text-slate-500 select-none">qr.dinhq.io.vn/</span>
+                <input type="text" id="qrFileCustom" maxlength="4" placeholder="VD: a1b2 (tối đa 4 ký tự)" class="w-full py-3 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none text-sm pl-1">
               </div>
             </div>
           </div>
@@ -254,6 +269,7 @@
       });
 
       document.getElementById('qrInputUrlGroup').classList.toggle('hidden', type !== 'url');
+      document.getElementById('qrInputFileGroup').classList.toggle('hidden', type !== 'file');
       document.getElementById('qrInputWifiGroup').classList.toggle('hidden', type !== 'wifi');
       document.getElementById('qrInputTextGroup').classList.toggle('hidden', type !== 'text');
 
@@ -322,7 +338,7 @@
     document.getElementById('qrInnerForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitQrBtn');
-      btn.disabled = true; btn.innerText = 'Đang tạo QR...';
+      btn.disabled = true; btn.innerText = 'Đang xử lý...';
 
       let qrPayloadContent = '';
       const colorDark = document.getElementById('qrColorDark').value.replace('#', '');
@@ -346,6 +362,32 @@
             document.getElementById('linkResultContainer').classList.remove('hidden');
           } else { alert(data.error); btn.disabled = false; btn.innerText = 'Tạo Mã QR'; return; }
         } catch (err) { alert('Không thể kết nối máy chủ!'); btn.disabled = false; btn.innerText = 'Tạo Mã QR'; return; }
+      } else if (currentQrCategory === 'file') {
+        const fileInput = document.getElementById('qrFileInput');
+        if (!fileInput.files || fileInput.files.length === 0) {
+          alert('Vui lòng chọn một tệp để tải lên!');
+          btn.disabled = false; btn.innerText = 'Tạo Mã QR';
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        formData.append('customSlug', document.getElementById('qrFileCustom').value.trim());
+
+        try {
+          const res = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+          });
+          const data = await res.json();
+          if (data.success) {
+            qrPayloadContent = data.shortUrl; // Link định dạng 4 chữ từ backend
+            document.getElementById('resultLabel').innerText = 'Link tệp ngắn gọn của bạn:';
+            document.getElementById('resultInput').className = 'w-full bg-transparent px-3 text-amber-600 dark:text-amber-400 font-medium text-sm focus:outline-none';
+            document.getElementById('resultInput').value = data.shortUrl;
+            document.getElementById('linkResultContainer').classList.remove('hidden');
+          } else { alert(data.error); btn.disabled = false; btn.innerText = 'Tạo Mã QR'; return; }
+        } catch (err) { alert('Không thể tải tệp lên máy chủ!'); btn.disabled = false; btn.innerText = 'Tạo Mã QR'; return; }
       } else if (currentQrCategory === 'wifi') {
         const ssid = document.getElementById('wifiSsid').value.trim();
         const pass = document.getElementById('wifiPass').value.trim();
