@@ -1,12 +1,10 @@
 {
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "http://dono-03.danbot.host:5096/api/:path*"
-    },
-    {
-      "source": "/:slug",
-      "destination": "http://dono-03.danbot.host:5096/:slug"
-    }
+    { "source": "/api/shorten", "destination": "/api/shorten.js" },
+    { "source": "/api/paste", "destination": "/api/paste.js" },
+    { "source": "/api/qr-link", "destination": "/api/qr-link.js" },
+    { "source": "/note/:slug", "destination": "/api/paste.js?slug=:slug" },
+    { "source": "/qr/:slug", "destination": "/api/qr-link.js?slug=:slug" },
+    { "source": "/:slug", "destination": "/api/shorten.js?slug=:slug" }
   ]
 }
